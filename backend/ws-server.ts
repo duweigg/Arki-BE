@@ -42,7 +42,7 @@ export const initWebSocketServer = (server: http.Server) => {
                 // persist message
                 if (!chatHistory[familyId]) chatHistory[familyId] = [];
                 chatHistory[familyId].push(msg);
-                saveChatToFile(familyId, chatHistory[familyId])
+                saveChatToFile(familyId, msg)
 
             } catch (err) {
                 console.error('Error processing message:', err);
@@ -61,11 +61,12 @@ export const initWebSocketServer = (server: http.Server) => {
 
 const CHAT_FILE = path.join(__dirname, './mock-data/chatMessages.json');
 
-function saveChatToFile(familyId: string, messages: Message[]) {
+function saveChatToFile(familyId: string, message: Message) {
+    console.log("safe the message")
     const existing = fs.existsSync(CHAT_FILE)
         ? JSON.parse(fs.readFileSync(CHAT_FILE, 'utf-8'))
         : {};
-    existing[familyId] = [...existing[familyId], ...messages];
+    existing[familyId] = [...existing[familyId], message];
 
     fs.writeFileSync(CHAT_FILE, JSON.stringify(existing, null, 2));
 }

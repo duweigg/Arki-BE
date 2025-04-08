@@ -8,9 +8,9 @@ export default function Home() {
   useEffect(() => {
     const userId = sessionStorage.getItem("userId") ?? ""
     if (userId != "") {
-      router.push("/login")
-    } else {
       router.push("/dashboard")
+    } else {
+      router.push("/login")
 
     }
   }, [])
