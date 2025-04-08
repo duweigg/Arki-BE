@@ -1,0 +1,7 @@
+export const wsDomain = "ws://localhost:4000"
+export const imageDomain = "http://localhost:4000"
+const domain = "http://localhost:4000/api"
+export const chatUrl = domain + "/chat"
+export const investmentUrl = domain + "/investment"
+export const familyUrl = domain + "/family"
+export const portfolioUrl = domain + "/portfolio"
